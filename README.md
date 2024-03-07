@@ -184,7 +184,7 @@ source archive used to successfully build biber is included in the command below
 it.
 
 ``` sh
-wget wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/libtext-bibtex-perl/0.88-3build3/libtext-bibtex-perl_0.88.orig.tar.gz
+wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/libtext-bibtex-perl/0.88-3build3/libtext-bibtex-perl_0.88.orig.tar.gz
 ```
 
 Extract it, cd into it, and run the build script.

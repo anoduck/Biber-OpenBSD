@@ -15,7 +15,7 @@ export PAR_VERBATIM
 BIBER_BIN="$PERLBREW_ROOT/perls/perl-5.38.2/bin/biber"
 BIBER_REPO="$HOME/Sandbox/biber"
 
-"$HOME"/perl5/perlbrew/perls/perl-5.38.2/bin/pp -vv \
+"$PERLBREW_ROOT"/perls/perl-5.38.2/bin/pp -vv \
                                                         --module=deprecate \
                                                         --module=App::Packer::PAR \
                                                         --module=Biber::Input::file::bibtex \

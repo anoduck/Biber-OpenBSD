@@ -10,9 +10,11 @@
 
 ## Installing Biber on OpenBSD
 
+It's time to play everyone's favorite game, "Do as I say, not as I do."
+
 As you perform this install, keep in mind, you do not want to use `sudo` or `doas` for any of the
-following commands, nor do you want to perform these steps as root. Doing so *will result in the
-corruption of your system's perl distribution*.
+following commands, nor do you want to perform these steps as root. Doing so **will result in the
+corruption of your system's perl distribution**.
 
 ### Install Perlbrew
 
@@ -76,9 +78,7 @@ mkdir -p $HOME/Sandbox && cd $_
 
 ### Acquire dependencies and source
 
-Go ahead and clone the repository with the source code for biber where ever you normally put such
-things. After witnessing another user on github use the folder `~/Sandbox`, I have followed suit,
-but this is just a suggestion.
+Go ahead and clone the repository with the source code for biber inside your sandbox.
 
 ```bash
 git clone https://github.com/plk/biber
@@ -96,6 +96,17 @@ cpm install -g bibtex Readonly::XS Pod::Simple Pod::Simple::TranscodeSmart \
 Pod::Simple::TranscodeDumb pod::PerlDoc Text::BibTex Text::CSV
 ```
 
+### Install Perl Packer
+
+*OK, I admit it. I screwed up and forgot to mention this the first time I wrote this file.*
+
+Before going any further, take the time to install `pp` the perl packer. Later on, the distribution build
+script will use `pp` to package the biber binary you are diligently working to build.
+
+``` sh
+cpm install -g pp
+```
+
 ### Setting up the repository for a successful build 
 
 This is where the other files in this repository play an important role. Take a moment to examine
@@ -111,15 +122,12 @@ from this repository into the root folder of the biber repository you just clone
 |       `-- build.sh
 `-- local
     `-- libcrypt.so.2
-
-3 directories, 5 files
 ```
 
 #### Clone this repository and copy it’s files into the Biber Repository
 
-So, let’s change directory to whereever you usually put such things, and clone this repository. For
-this tutorial, we will assume that place will be the parent folder of the current one, which means
-it is `../` relative to your `$PWD`.
+So, let’s change directories back into the root of your sandbox, and clone this repository. In other words,
+`cd..`.
 
 ``` sh
 cd .. && git clone https://github.com/anoduck/Biber-OpenBSD && cd Biber-OpenBSD
@@ -139,8 +147,8 @@ This should setup the biber repository for a successful build.
 ### Build biber
 
 Having to rarely compile perl binaries from source, the next few steps threw me for a loop the first
-time. This is because developers often provide and sometimes even required to provide users with
-different ways to install their software. With biber, this is not the case, and perl provides all
+time. This is because developers often provide, and sometimes are required to provide, users with
+different means to install their software. With biber, this is not the case, and perl provides all
 the flexibility for different platforms one might need. 
 
 Change Directory into the biber repository.
@@ -190,7 +198,7 @@ wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/libtext-bibtex-p
 Extract it, cd into it, and run the build script.
 
 ``` sh
-tar zxvf libtext-bibtex-perl_0.88.org.tar.gz && cd Text-BibTeX-0.88 && perl Build.pl && ./Build
+tar -zxvf libtext-bibtex-perl_0.88.org.tar.gz && cd Text-BibTeX-0.88 && perl Build.PL && ./Build
 ```
 
 Once successfully built, you will need to move/merge parts of this directory into the biber repo. Specifically, you
@@ -198,6 +206,9 @@ will need to merge the `blib` folder from this directory with the `blib` folder 
 repository.
 
 ``` sh
+# If you use the standard cp
+cp -R blib/* ../../blib/
+# If you use gnu cp
 cp -r blib/* ../../blib/
 ```
 
@@ -227,12 +238,16 @@ cd ../../testfiles
 ../dist/openbsd_amd64/biber-2.8.amd64-openbsd7 --validate-control --convert-control test
 ```
 
-When this completes without an error, you have successfully built biber.
+When this completes without an error, you have successfully built biber. You should be able to move it to
+`~/bin` or `~/.local/bin`, and have it execute without error.
 
 ### Caveats
 
-The drawback to this approach of building biber, is biber must remain in the user’s home folder in
-order to locate it’s required libraries. 
+- The drawback to this approach of building biber, is biber must remain in the user’s home folder in
+order to locate it’s required libraries.
+
+- In order to remain usable, you will unfortunately be bound to having perlbrew installed on your system until
+  the end of time.
 
 ## Author
 
@@ -248,7 +263,8 @@ Give a ⭐️ if this project helped you!
 ## 📝 License
 
 Copyright © 2024 [Anoduck](https://github.com/anoduck).<br />
-This project is [MIT](https://anoduck.mit-license.org) licensed.
+This project is [MIT](https://anoduck.mit-license.org) licensed. Why this link does not include my username is
+unknown.
 
 ***
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_

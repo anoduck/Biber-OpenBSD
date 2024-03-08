@@ -12,13 +12,10 @@
 PAR_VERBATIM=1
 export PAR_VERBATIM
 
-PERL_ROOT="$Home/perl5/perlbrew/perls/perl-5.38.2/lib/site_perl/5.38.2"
-PERLDOC_DIR="$Home/perl5/perlbrew/perls/perl-5.38.2/lib/5.38.2/Pod/Perldoc"
-BIBER_BIN="$Home/perl5/perlbrew/perls/perl-5.38.2/bin/biber"
-BIB_LIB="$PERL_ROOT/Biber"
-PERL_LIB="$PERL_ROOT/OpenBSD.amd64-openbsd"
+BIBER_BIN="$PERLBREW_ROOT/perls/perl-5.38.2/bin/biber"
+BIBER_REPO="$HOME/Sandbox/biber"
 
-$Home/perl5/perlbrew/perls/perl-5.38.2/bin/pp -vv \
+"$HOME"/perl5/perlbrew/perls/perl-5.38.2/bin/pp -vv \
                                                         --module=deprecate \
                                                         --module=App::Packer::PAR \
                                                         --module=Biber::Input::file::bibtex \
@@ -44,14 +41,14 @@ $Home/perl5/perlbrew/perls/perl-5.38.2/bin/pp -vv \
                                                         --module=File::Find::Rule \
                                                         --module=Text::CSV_XS \
                                                         --module=DateTime \
-                                                        --link="$Home/Sandbox/biber/blib/usrlib/libbtparse.so" \
+                                                        --link="$BIBER_REPO/blib/usrlib/libbtparse.so" \
                                                         --link=/usr/local/lib/libiconv.so.7.1 \
                                                         --link=/usr/local/lib/libxml2.so.19.0 \
                                                         --link=/usr/local/lib/libxslt.so.4.1 \
                                                         --link=/usr/local/lib/libexslt.so.9.8 \
                                                         --link=/usr/local/lib/libgdbm.so.7.0 \
                                                         --link=/usr/lib/libz.so.6.0 \
-                                                        --link="$Home/Sandbox/biber/local/libcrypt.so.2" \
+                                                        --link="$BIBER_REPO/local/libcrypt.so.2" \
                                                         --link=/usr/lib/libutil.so.13.1 \
                                                         --link=/usr/local/lib/eopenssl31/libcrypto.so.15.1 \
                                                         --link=/usr/lib/libssl.so.47.4 \

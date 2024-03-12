@@ -92,8 +92,8 @@ missing a required perl library.
 # First install the build module to avoid the error.
 cpm install -g Module::Build
 # Then install the remainder of the dependencies needed for the build.
-cpm install -g bibtex Readonly::XS Pod::Simple Pod::Simple::TranscodeSmart \
-Pod::Simple::TranscodeDumb pod::PerlDoc Text::BibTex Text::CSV
+cpm install -g Readonly::XS Pod::Simple Pod::Simple::TranscodeSmart \
+Pod::Simple::TranscodeDumb Pod::Perldoc Text::BibTeX Text::CSV
 ```
 
 ### Install Perl Packer

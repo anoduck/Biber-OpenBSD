@@ -8,6 +8,38 @@
 
 > Needed files for building Biber on OpenBSD
 
+## Biber OpenBSD
+
+### Forward by @madaalch
+
+#### BibLaTeX
+
+In order for biber to work, it needs a compatible version of BibLaTeX.
+Once you have verified that biber is functioning and have copied it to the bin directory of your choice run `biber --version` and make note.
+
+To find the compatible version, visit the [biber documentation page](https://sourceforge.net/projects/biblatex-biber/files/biblatex-biber/development/documentation) and in biber.pdf look at compatibility matrix.
+Download the corresponding version of BibLaTeX from [sourceforge](https://sourceforge.net/projects/biblatex)
+
+Run `kpsewhich -var-value=TEXHOME` and make note of directory;
+(it should be `~/texmf`; if this doesn't exist then create it).
+`cd` to directory which contains the downloaded `biblatex-*.tgz`.
+`tar -zxvf biblatex-*.tgz -C ~/texmf` where * is the version you have just downloaded.
+`texhash ~/texmf`
+
+*NOTE* after running the above command, `kpsewhich -var-value=TEXHOME` will no longer print anything.
+
+> NOTE TO ANODUCK; I think you could make the texmf directory anywhere and run `texhash` with the appropriate directory, however I wanted to play things by the book. If you're more confident about the safety of this then you could recommend a different place. I personally can't stand cluttering up my home directory.)
+
+Now go back to the `~/Sandbox/biber/testfiles` directory and `pdflatex test ; biber test ; pdflatex test`.
+Open the test.pdf; if you have no errors then your test.pdf will list a single successful reference.
+
+Back up the document that you wish to run biber with.
+Run `pdflatex yourdocumentname ; biber yourdocumentname` and check for errors.
+Note that if your .bib file's name contains 12 or more characters you will get an error,
+(example bibliography.bib will be truncated to bibliograph.bib, which biber will not be able to find.)
+if needs be rename it to biblio.bib or something similarly short.
+Now recompile your document and you should have all your beautiful references sorted.
+
 ## Installing Biber on OpenBSD
 
 It's time to play everyone's favorite game, "Do as I say, not as I do."

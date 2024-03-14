@@ -238,16 +238,33 @@ cd ../../testfiles
 ../dist/openbsd_amd64/biber-2.8.amd64-openbsd7 --validate-control --convert-control test
 ```
 
-When this completes without an error, you have successfully built biber. You should be able to move it to
-`~/bin` or `~/.local/bin`, and have it execute without error.
+If the test checks out, you now have a working biber binary.
+
+### Wrapping it up
+
+Since the binary we just built is a self extracting archive, containing within itself all the needed
+libraries to function, it can safely be placed in your path at `/usr/local/bin/biber`. Which is where Emacs
+will look for it, in case you are wondering. 
+
+As for Perlbrew, you can purge it from your system if desired, but it is recommended to keep Perlbrew
+installed for future builds of biber. Instead just remove the currently installed perl build and disable perlbrew.
+This will reduce the overall consumption of disk space greatly.
+
+```bash
+# See what version of perl you installed
+perlbrew list
+# And then remove that version. Ex. 5.38.2
+perlbrew uninstall perl-5.38.2
+# Then disable perlbrew for this shell
+perlbrew off
+```
+
+And, with that your done!
 
 ### Caveats
 
-- The drawback to this approach of building biber, is biber must remain in the user’s home folder in
-order to locate it’s required libraries.
-
-- In order to remain usable, you will unfortunately be bound to having perlbrew installed on your system until
-  the end of time.
+- Just be aware the executable is built from perl libraries that may not be native to your system. More
+  than likely, this never should be the cause of any issues, but is healthy to keep a mental note of it.
 
 ## Author
 

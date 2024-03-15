@@ -12,7 +12,7 @@
 
 ### Notations on working directory
 
-*Some peopele* do not like to clutter up their home directory (I am poking fun @madaalch), where some people
+*Some people* do not like to clutter up their home directory (I am poking fun @madaalch), where some people
 are of the exact opposite affinity. This is more or less simply differences in philosophical perspectives of
 Unix. This being said, the work directory for this installation can be where ever and whatever you want it to
 be, `~/Sandbox` is used to conserve the effort of the Author, as at the time of writing `~/Sandbox/`

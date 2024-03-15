@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to Biber-OpenBSD 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.0.4-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-0.0.5-blue.svg?cacheSeconds=2592000" />
   <a href="https://anoduck.mit-license.org" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
@@ -10,9 +10,20 @@
 
 ## Biber OpenBSD
 
-### Forward by @madaalch
+### Notations on working directory
 
-#### BibLaTeX
+*Some peopele* do not like to clutter up their home directory (I am poking fun @madaalch), where some people
+are of the exact opposite affinity. This is more or less simply differences in philosophical perspectives of
+Unix. This being said, the work directory for this installation can be where ever and whatever you want it to
+be, `~/Sandbox` is used to conserve the effort of the Author, as at the time of writing `~/Sandbox/`
+was already referenced by the build files. In retrospect, a more traditional working directory would have been
+`/opt` or `/usr/src`.
+
+If you decide to use another working directory other than `~/Sandbox/` then you will need to edit the build
+files to reflect this change. To make things painfully obvious, the "build files" are the files located in
+`dist/OpenBSD` of this repository.
+
+#### BibLaTeX by @madaalch
 
 In order for biber to work, it needs a compatible version of BibLaTeX.
 Once you have verified that biber is functioning and have copied it to the bin directory of your choice run `biber --version` and make note.
@@ -27,8 +38,6 @@ Run `kpsewhich -var-value=TEXHOME` and make note of directory;
 `texhash ~/texmf`
 
 *NOTE* after running the above command, `kpsewhich -var-value=TEXHOME` will no longer print anything.
-
-> NOTE TO ANODUCK; I think you could make the texmf directory anywhere and run `texhash` with the appropriate directory, however I wanted to play things by the book. If you're more confident about the safety of this then you could recommend a different place. I personally can't stand cluttering up my home directory.)
 
 Now go back to the `~/Sandbox/biber/testfiles` directory and `pdflatex test ; biber test ; pdflatex test`.
 Open the test.pdf; if you have no errors then your test.pdf will list a single successful reference.

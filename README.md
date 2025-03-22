@@ -266,6 +266,8 @@ cd dist/openbsd_amd64
 ./build.sh
 ```
 
+You might need to update the version number of libraries in `build.sh`. You may also need to install some (e.g., `doas pkg_add gdbm`).
+
 ### Run the test to ensure it works
 
 Being brutally honest, it took four tries before a functioning biber executable was built. Every one

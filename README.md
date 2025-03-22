@@ -233,16 +233,16 @@ need to make sure the downloaded library is compatible with the version of perl 
 source code for this package can be found on
 [launchpad](https://launchpad.net/ubuntu/+source/libtext-bibtex-perl). The url for the
 source archive used to successfully build biber is included in the command below. So, let’s download
-it.
+it (using `ftp` as it is native to OpenBSD).
 
 ``` sh
-wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/libtext-bibtex-perl/0.88-3build3/libtext-bibtex-perl_0.88.orig.tar.gz
+ftp https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/libtext-bibtex-perl/0.88-3build3/libtext-bibtex-perl_0.88.orig.tar.gz
 ```
 
 Extract it, cd into it, and run the build script.
 
 ``` sh
-tar -zxvf libtext-bibtex-perl_0.88.org.tar.gz && cd Text-BibTeX-0.88 && perl Build.PL && ./Build
+tar -zxvf libtext-bibtex-perl_0.88.orig.tar.gz && cd Text-BibTeX-0.88 && perl Build.PL && ./Build
 ```
 
 Once successfully built, you will need to move/merge parts of this directory into the biber repo. Specifically, you

@@ -61,6 +61,9 @@ corruption of your system's perl distribution**.
 
 To install Biber on OpenBSD, Perlbrew is required. The installation script for perlbrew is below.
 
+You can spend time trying to get the perlbrew installation script working in an alternate shell (e.g., ksh, zsh), but it's easier to just install bash.
+
+
 ```bash
 curl -L https://install.perlbrew.pl | bash
 ```
@@ -167,11 +170,11 @@ from this repository into the root folder of the biber repository you just clone
 
 #### Clone this repository and copy it’s files into the Biber Repository
 
-So, let’s change directories back into the root of your sandbox, and clone this repository. In other words,
+You should still be in the root of your sandbox; if not, `cd ~/Sandbox`. Clone this repository. In other words,
 `cd..`.
 
 ``` sh
-cd .. && git clone https://github.com/anoduck/Biber-OpenBSD && cd Biber-OpenBSD
+git clone https://github.com/anoduck/Biber-OpenBSD && cd Biber-OpenBSD
 ```
 
 Now copy the contents of this repository into your biber repository, ensuring to maintain the same folder

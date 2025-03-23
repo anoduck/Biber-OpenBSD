@@ -137,7 +137,7 @@ missing a required perl library.
 cpm install -g Module::Build
 # Then install the remainder of the dependencies needed for the build.
 cpm install -g Readonly::XS Pod::Simple Pod::Simple::TranscodeSmart \
-Pod::Simple::TranscodeDumb Pod::Perldoc Text::BibTeX Text::CSV IO::Socket::SSL DateTime
+Pod::Simple::TranscodeDumb Pod::Perldoc Text::BibTeX Text::CSV IO::Socket::SSL DateTime DateTime::Format::Builder DateTime::Calendar::Julian XML::LibXML::Simple XML::LibXSLT
 ```
 
 ### Install Perl Packer

@@ -137,7 +137,7 @@ missing a required perl library.
 cpm install -g Module::Build
 # Then install the remainder of the dependencies needed for the build.
 cpm install -g Readonly::XS Pod::Simple Pod::Simple::TranscodeSmart \
-Pod::Simple::TranscodeDumb Pod::Perldoc Text::BibTeX Text::CSV
+Pod::Simple::TranscodeDumb Pod::Perldoc Text::BibTeX Text::CSV IO::Socket::SSL DateTime
 ```
 
 ### Install Perl Packer
@@ -266,7 +266,7 @@ cd dist/openbsd_amd64
 ./build.sh
 ```
 
-You might need to update the version number of libraries in `build.sh`. You may also need to install some (e.g., `doas pkg_add gdbm`).
+You might need to update the version number of libraries in `build.sh`. You may also need to install some (e.g., `doas pkg_add gdbm openssl-3.3.2p0v0`).
 
 ### Run the test to ensure it works
 

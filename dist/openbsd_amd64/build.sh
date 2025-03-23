@@ -12,10 +12,10 @@
 PAR_VERBATIM=1
 export PAR_VERBATIM
 
-BIBER_BIN="$PERLBREW_ROOT/perls/perl-5.38.2/bin/biber"
+BIBER_BIN="$PERLBREW_ROOT/perls/perl-5.40.1/bin/biber"
 BIBER_REPO="$HOME/Sandbox/biber"
 
-"$PERLBREW_ROOT"/perls/perl-5.38.2/bin/pp -vv \
+"$PERLBREW_ROOT"/perls/perl-5.40.1/bin/pp -vv \
                                                         --module=deprecate \
                                                         --module=App::Packer::PAR \
                                                         --module=Biber::Input::file::bibtex \
@@ -47,15 +47,15 @@ BIBER_REPO="$HOME/Sandbox/biber"
                                                         --module=XML::LibXSLT \
                                                         --link="$BIBER_REPO/blib/usrlib/libbtparse.so" \
                                                         --link=/usr/local/lib/libiconv.so.7.1 \
-                                                        --link=/usr/local/lib/libxml2.so.19.0 \
+                                                        --link=/usr/local/lib/libxml2.so.21.0 \
                                                         --link=/usr/local/lib/libxslt.so.4.1 \
                                                         --link=/usr/local/lib/libexslt.so.9.8 \
                                                         --link=/usr/local/lib/libgdbm.so.7.0 \
-                                                        --link=/usr/lib/libz.so.7.0 \
+                                                        --link=/usr/lib/libz.so.7.1 \
                                                         --link="$BIBER_REPO/local/libcrypt.so.2" \
-                                                        --link=/usr/lib/libutil.so.18.1 \
-                                                        --link=/usr/local/lib/eopenssl31/libcrypto.so.15.1 \
-                                                        --link=/usr/lib/libssl.so.56.0 \
+                                                        --link=/usr/lib/libutil.so.18.0 \
+                                                        --link=/usr/local/lib/eopenssl33/libcrypto.so.27.0 \
+                                                        --link=/usr/lib/libssl.so.58.0 \
                                                         --addlist=biber.files \
                                                         --cachedeps=scancache \
                                                         --output=biber-2.8.`uname -m`-openbsd`uname -r | sed 's/\..*//' | sed 's/8/8,9,10,11,12/'` \

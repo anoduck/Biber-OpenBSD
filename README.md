@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to Biber-OpenBSD 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.0.5-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-0.0.6-blue.svg?cacheSeconds=2592000" />
   <a href="https://anoduck.mit-license.org" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
@@ -48,6 +48,17 @@ Note that if your .bib file's name contains 12 or more characters you will get a
 (example bibliography.bib will be truncated to bibliograph.bib, which biber will not be able to find.)
 if needs be rename it to biblio.bib or something similarly short.
 Now recompile your document and you should have all your beautiful references sorted.
+
+## Preliminary Decisions
+
+You can spend time trying to get the perlbrew installation script working in an alternate shell 
+(e.g., ksh, zsh), but it's easier to just install bash. Most of us already have bash installed on our
+system, but if you haven't done so yet, it's a good time to consider it and join the cool kid club.
+
+```bash
+doas pkg_add -U bash
+```
+Now your ready for the installation.
 
 ## Installing Biber on OpenBSD
 
@@ -134,7 +145,7 @@ missing a required perl library.
 cpm install -g Module::Build
 # Then install the remainder of the dependencies needed for the build.
 cpm install -g Readonly::XS Pod::Simple Pod::Simple::TranscodeSmart \
-Pod::Simple::TranscodeDumb Pod::Perldoc Text::BibTeX Text::CSV
+Pod::Simple::TranscodeDumb Pod::Perldoc Text::BibTeX Text::CSV IO::Socket::SSL DateTime DateTime::Format::Builder DateTime::Calendar::Julian XML::LibXML::Simple XML::LibXSLT
 ```
 
 ### Install Perl Packer
@@ -167,11 +178,11 @@ from this repository into the root folder of the biber repository you just clone
 
 #### Clone this repository and copy it’s files into the Biber Repository
 
-So, let’s change directories back into the root of your sandbox, and clone this repository. In other words,
+You should still be in the root of your sandbox; if not, `cd ~/Sandbox`. Clone this repository. In other words,
 `cd..`.
 
 ``` sh
-cd .. && git clone https://github.com/anoduck/Biber-OpenBSD && cd Biber-OpenBSD
+git clone https://github.com/anoduck/Biber-OpenBSD && cd Biber-OpenBSD
 ```
 
 Now copy the contents of this repository into your biber repository, ensuring to maintain the same folder
@@ -230,16 +241,16 @@ need to make sure the downloaded library is compatible with the version of perl 
 source code for this package can be found on
 [launchpad](https://launchpad.net/ubuntu/+source/libtext-bibtex-perl). The url for the
 source archive used to successfully build biber is included in the command below. So, let’s download
-it.
+it (using `ftp` as it is native to OpenBSD).
 
 ``` sh
-wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/libtext-bibtex-perl/0.88-3build3/libtext-bibtex-perl_0.88.orig.tar.gz
+ftp https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/libtext-bibtex-perl/0.88-3build3/libtext-bibtex-perl_0.88.orig.tar.gz
 ```
 
 Extract it, cd into it, and run the build script.
 
 ``` sh
-tar -zxvf libtext-bibtex-perl_0.88.org.tar.gz && cd Text-BibTeX-0.88 && perl Build.PL && ./Build
+tar -zxvf libtext-bibtex-perl_0.88.orig.tar.gz && cd Text-BibTeX-0.88 && perl Build.PL && ./Build
 ```
 
 Once successfully built, you will need to move/merge parts of this directory into the biber repo. Specifically, you
@@ -262,6 +273,8 @@ OpenBSD’s distribution specific folder and run the build from there.
 cd dist/openbsd_amd64
 ./build.sh
 ```
+
+You might need to update the version number of libraries in `build.sh`. You may also need to install some (e.g., `doas pkg_add gdbm openssl-3.3.2p0v0`).
 
 ### Run the test to ensure it works
 

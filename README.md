@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to Biber-OpenBSD 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.0.5-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-0.0.6-blue.svg?cacheSeconds=2592000" />
   <a href="https://anoduck.mit-license.org" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
@@ -49,6 +49,17 @@ Note that if your .bib file's name contains 12 or more characters you will get a
 if needs be rename it to biblio.bib or something similarly short.
 Now recompile your document and you should have all your beautiful references sorted.
 
+## Preliminary Decisions
+
+You can spend time trying to get the perlbrew installation script working in an alternate shell 
+(e.g., ksh, zsh), but it's easier to just install bash. Most of us already have bash installed on our
+system, but if you haven't done so yet, it's a good time to consider it and join the cool kid club.
+
+```bash
+doas pkg_add -U bash
+```
+Now your ready for the installation.
+
 ## Installing Biber on OpenBSD
 
 It's time to play everyone's favorite game, "Do as I say, not as I do."
@@ -60,9 +71,6 @@ corruption of your system's perl distribution**.
 ### Install Perlbrew
 
 To install Biber on OpenBSD, Perlbrew is required. The installation script for perlbrew is below.
-
-You can spend time trying to get the perlbrew installation script working in an alternate shell (e.g., ksh, zsh), but it's easier to just install bash.
-
 
 ```bash
 curl -L https://install.perlbrew.pl | bash
